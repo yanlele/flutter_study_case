@@ -57,10 +57,63 @@ class YLContentBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text(
-        "Hello World",
-        style: TextStyle(fontSize: 30, color: Colors.orange),
-      ),
+      child: YLRow(),
+    );
+  }
+}
+
+/// 有一个状态概念
+/// 不能直接定义状态
+/// 创建一个单独的类， 来维护状态
+class YLRow extends StatefulWidget {
+  const YLRow({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return YLRowState();
+  }
+}
+
+class YLRowState extends State<YLRow> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      // 主轴对齐方式
+      mainAxisAlignment: MainAxisAlignment.center,
+
+      // 子元素
+      children: const [
+        YLCheckBox(),
+        Text(
+          "hello",
+          style: TextStyle(fontSize: 20),
+        ),
+      ],
+    );
+  }
+}
+
+class YLCheckBox extends StatefulWidget {
+  const YLCheckBox({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return YLCheckBoxState();
+  }
+}
+
+class YLCheckBoxState extends State<YLCheckBox> {
+  var _throwShotAway = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      value: _throwShotAway,
+      onChanged: (bool? newValue) {
+        setState(() {
+          _throwShotAway = newValue!;
+        });
+      },
     );
   }
 }

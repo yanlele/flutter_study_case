@@ -62,19 +62,9 @@ class YLContentBody extends StatelessWidget {
   }
 }
 
-/// 有一个状态概念
-/// 不能直接定义状态
-/// 创建一个单独的类， 来维护状态
-class YLRow extends StatefulWidget {
+class YLRow extends StatelessWidget {
   const YLRow({Key? key}) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() {
-    return YLRowState();
-  }
-}
-
-class YLRowState extends State<YLRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -102,6 +92,10 @@ class YLCheckBox extends StatefulWidget {
   }
 }
 
+
+/// 有一个状态概念
+/// 不能直接定义状态
+/// 创建一个单独的类， 来维护状态
 class YLCheckBoxState extends State<YLCheckBox> {
   var _throwShotAway = false;
 

@@ -6,13 +6,17 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
-      title: const Text("hello"),
+      title: const Center(
+        child: Text(
+          "第一个Flutter程序",
+          style: TextStyle(),
+        ),
+      ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(60);
 }
 
 main() {

@@ -6,9 +6,10 @@ main() {
     "Hello World",
     textDirection: TextDirection.ltr,
     style: TextStyle(
-        fontSize: 60,
+        fontSize: 30,
         color: Colors.orange
     ),
   );
-  runApp(text);
+  const center = Center(child: text);
+  runApp(center);
 }

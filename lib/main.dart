@@ -9,7 +9,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
       title: const Center(
         child: Text(
           "第一个Flutter程序",
-          style: TextStyle(),
         ),
       ),
     );
@@ -28,12 +27,26 @@ main() {
   );
   const center = Center(child: text);
 
-  final bar = runApp(const MaterialApp(
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     // Scaffold 脚手架， 可以快速搭建页面
     home: Scaffold(
-      // appBar: AppBar(),
+      // appBar: AppBar(), // 这个会跑错， 非常无语........
       appBar: Header(),
       body: center,
     ),
   ));
+}
+
+/// Widget:
+///  有状态的 Widget: StateFulWidget 在运行时有一些状态是需要更改的
+///  无状态的 Widget: StatelessWidget 在运行时，无状态更改
+class YLHomePage extends StatelessWidget {
+  const YLHomePage({Key? key}) : super(key: key);
+
+  // 重写 build 方法
+  @override
+  Widget build(BuildContext context) {
+    return const Text("Hello World");
+  }
 }

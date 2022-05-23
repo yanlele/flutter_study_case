@@ -20,15 +20,18 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
 
 main() {
   // 1. 调用 runApp 函数, 启动一个程序
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     // Scaffold 脚手架， 可以快速搭建页面
     home: Scaffold(
       // appBar: AppBar(), // 这个会跑错， 非常无语........
-      appBar: Header(),
-      body: Center(child: Text(
+      appBar: AppBar(
+        title: const Text("title"),
+      ),
+      body: const Center(
+          child: Text(
         "Hello World",
-        // textDirection: TextDirection.ltr,
+        textDirection: TextDirection.ltr,
         style: TextStyle(fontSize: 30, color: Colors.orange),
       )),
     ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'flutter_application_demo/01_widget_yl_stateless_echo.dart';
-import 'flutter_application_demo/04_widget_yl_stateful_state_context.dart';
+import 'flutter_application_demo/06_state_yl_self.dart';
 
 main() => runApp(const MyApp());
 
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLGetStateObjectRoute(),
+        body: const YLTapBoxA(),
       ),
     );
   }

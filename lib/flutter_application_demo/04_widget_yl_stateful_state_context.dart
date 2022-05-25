@@ -24,9 +24,12 @@ class _YLGetStateObjectRouteState extends State<YLGetStateObjectRoute> {
   //   return ElevatedButton(onPressed: onPressed, child: const Text("打开抽屉"));
   // }
 
+  static final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(title: const Text("子树中获取State对象")),
       body: Center(
         child: Column(
@@ -58,10 +61,14 @@ class _YLGetStateObjectRouteState extends State<YLGetStateObjectRoute> {
                 },
                 child: const Text("显示 snack bar"),
               );
-            })
+            }),
+            ElevatedButton(
+                onPressed: () => _globalKey.currentState?.openDrawer(),
+                child: const Text("打开抽屉菜单4"))
           ],
         ),
       ),
+      drawer: const Drawer(),
     );
   }
 }

@@ -17,13 +17,16 @@ class Echo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-          color: backgroundColor,
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 30),
-          ),
-        ));
+    return Scaffold(
+      appBar: AppBar(title: const Text("echo title")),
+      body: Center(
+          child: Container(
+        color: backgroundColor,
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 30),
+        ),
+      )),
+    );
   }
 }

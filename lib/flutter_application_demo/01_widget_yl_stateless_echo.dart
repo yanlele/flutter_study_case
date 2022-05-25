@@ -19,11 +19,11 @@ class Echo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Container(
-      color: backgroundColor,
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 30),
-      ),
-    ));
+          color: backgroundColor,
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 30),
+          ),
+        ));
   }
 }

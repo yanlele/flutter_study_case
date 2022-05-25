@@ -11,11 +11,14 @@ class MyApp extends StatelessWidget {
   // 重写 build 方法
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "沙雕",
       debugShowCheckedModeBanner: false,
       // Scaffold 脚手架， 可以快速搭建页面
-      home: YLGetStateObjectRoute(),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("我是title")),
+        body: const YLGetStateObjectRoute(),
+      ),
     );
   }
 }

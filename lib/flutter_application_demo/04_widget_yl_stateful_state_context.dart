@@ -25,7 +25,7 @@ class _YLGetStateObjectRouteState extends State<YLGetStateObjectRoute> {
   // }
 
   static final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

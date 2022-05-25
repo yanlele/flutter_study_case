@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'flutter_application_demo/07_state_parent.dart';
+import 'flutter_application_demo/08_state_mixin.dart';
 
 main() => runApp(const MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLParentWidget(),
+        body: const YLParentWidgetC(),
       ),
     );
   }

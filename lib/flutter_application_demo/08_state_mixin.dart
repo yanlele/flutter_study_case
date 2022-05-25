@@ -91,6 +91,12 @@ class _TapBoxCState extends State<TapBoxC> {
                     width: 10,
                   )
                 : null),
+        child: Center(
+          child: Text(
+            widget.active ? "yanle" : "lele",
+            style: const TextStyle(fontSize: 32, color: Colors.white),
+          ),
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /*
-context 使用
+StatelessWidget context 使用
 * */
 class YLContextRoute extends StatelessWidget {
   const YLContextRoute({Key? key}) : super(key: key);

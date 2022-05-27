@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const FormTestRoute(),
+        body: const YLFormTestRoute(),
       ),
     );
   }

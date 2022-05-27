@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'base_components/01_text_field_customer_style.dart';
 import 'flutter_application_demo/08_state_mixin.dart';
 
 main() => runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLParentWidgetC(),
+        body: const YLTextFieldCustomerStyle(),
       ),
     );
   }

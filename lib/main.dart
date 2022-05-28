@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '06_layout_and_constraints/01_constrained_box.dart';
+import '06_layout_and_constraints/02_unconstrained_box.dart';
 
 main() => runApp(const MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLConstrainedBox(),
+        body: const YLUnconstrainedBox(),
       ),
     );
   }

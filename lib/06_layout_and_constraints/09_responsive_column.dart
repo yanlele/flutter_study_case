@@ -70,7 +70,7 @@ class YLLayoutBuilderRoute extends StatelessWidget {
       children: [
         SizedBox(width: 120, child: YLResponsiveColumn(children: children)),
         YLResponsiveColumn(children: children),
-        const YLLayoutLogPrint(child: Text("xx"))
+        const YLLayoutLogPrint(child: Text("xx")),
       ],
     );
   }

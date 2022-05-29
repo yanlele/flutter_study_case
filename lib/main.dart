@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '06_layout_and_constraints/08_center_demo.dart';
+import '06_layout_and_constraints/09_responsive_column.dart' show YLLayoutBuilderRoute;
 
 main() => runApp(const MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLCenterDemo(),
+        body: const YLLayoutBuilderRoute(),
       ),
     );
   }

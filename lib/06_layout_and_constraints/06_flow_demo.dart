@@ -6,7 +6,7 @@ class YLFlowDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flow(
-      delegate: TestFlowDelegate(margin: const EdgeInsets.all(10.0)),
+      delegate: TestFlowDelegate(margin: const EdgeInsets.all(20.0)),
       children: <Widget>[
         Container(width: 80.0, height: 80.0, color: Colors.red),
         Container(width: 80.0, height: 80.0, color: Colors.green),
@@ -40,7 +40,7 @@ class TestFlowDelegate extends FlowDelegate {
         context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
         x = w + margin.left;
       } else {
-        y = margin.left;
+        x = margin.left;
         y += context.getChildSize(i)!.height + margin.top + margin.bottom;
 
         context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
@@ -56,6 +56,8 @@ class TestFlowDelegate extends FlowDelegate {
 
   @override
   Size getSize(BoxConstraints constraints) {
-    return const Size(double.infinity, 200);
+    // 指定Flow的大小，简单起见我们让宽度竟可能大，但高度指定为200，
+    // 实际开发中我们需要根据子元素所占用的具体宽高来设置Flow大小
+    return const Size(double.infinity, 240);
   }
 }

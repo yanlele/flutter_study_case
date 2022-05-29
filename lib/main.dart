@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '06_layout_and_constraints/03_row_demo.dart';
+import '06_layout_and_constraints/04_flex_expanded_demo.dart';
 
 main() => runApp(const MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Scaffold 脚手架， 可以快速搭建页面
       home: Scaffold(
         appBar: AppBar(title: const Text("我是title")),
-        body: const YLRowDemo1(),
+        body: const YLFlexLayoutTestRoute(),
       ),
     );
   }

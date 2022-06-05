@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterappdemo1/models/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'git_api.dart';
 import 'net_cache.dart';
 
 const _themes = <MaterialColor>[
@@ -54,7 +55,7 @@ class Global {
       ..maxCount = 100;
 
     // todo 初始化网络请求相关配置？
-    // Git.init();
+    Git.init();
   }
 
   // 持久化 profile 信息， 两种写法是等价的

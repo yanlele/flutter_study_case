@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterappdemo1/models/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'net_cache.dart';
+
 const _themes = <MaterialColor>[
   Colors.blue,
   Colors.cyan,
@@ -17,7 +19,7 @@ class Global {
   static Profile profile = Profile();
 
   // todo 网络缓存对象
-  // static NetCache netCache = NetCache();
+  static NetCache netCache = NetCache();
 
   // 可选主题列表
   static List<MaterialColor> get themes => _themes;

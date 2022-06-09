@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterappdemo1/generated/l10n.dart';
+import 'package:flutterappdemo1/routes/home_page/components/body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(GmLocalizations.of(context).title),
       ),
+      body: const HomePageBody(),
     );
   }
 }

@@ -25,6 +25,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_lints: ^2.0.0
   build_runner: ^2.1.8
   json_model: ^1.0.0
@@ -32,6 +34,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - imgs/
+  fonts:
+    - family: myIcon
+      fonts:
+        - asset: fonts/iconfont.ttf
 
 flutter_intl:
   enabled: true

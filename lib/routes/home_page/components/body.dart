@@ -15,9 +15,7 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> {
   static const String loadingTag = "##loading##";
 
-  List<Repo> items = <Repo>[Repo()
-    ..name = loadingTag
-  ];
+  List<Repo> items = <Repo>[Repo()..name = loadingTag];
 
   bool hasMore = true;
   int page = 1;
@@ -31,15 +29,13 @@ class _HomePageBodyState extends State<HomePageBody> {
     Widget notLoginWidget = Center(
       child: ElevatedButton(
         onPressed: () => Navigator.pushNamed(context, "login"),
-        child: Text(GmLocalizations
-            .of(context)
-            .login),
+        child: Text(GmLocalizations.of(context).login),
       ),
     );
 
     // 登录了的场景， 展示列表
     Widget loginWidget = ListView.separated(
-      itemBuilder: itemBuilder,
+      itemBuilder: indexedWidgetBuilder(context),
       separatorBuilder: separatorBuilder,
       itemCount: itemCount,
     );
@@ -53,8 +49,7 @@ class _HomePageBodyState extends State<HomePageBody> {
     );
   }
 
-  IndexedWidgetBuilder indexedWidgetBuilder(BuildContext context) =>
-          (context, index) {
+  IndexedWidgetBuilder indexedWidgetBuilder(BuildContext context) => (context, index) {
         // 说明是最后一个元素
         if (items[index].name == loadingTag) {
           debugPrint("items[index].name == loadingTag");
@@ -75,6 +70,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             child: const Text("没有更多的数据", style: TextStyle(color: Colors.grey)),
           );
         }
+        return Container();
       };
 
   // 请求获取新的列表数据

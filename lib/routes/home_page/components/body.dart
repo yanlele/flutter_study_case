@@ -15,7 +15,9 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> {
   static const String loadingTag = "##loading##";
 
-  List<Repo> items = <Repo>[Repo()..name = loadingTag];
+  List<Repo> items = <Repo>[Repo()
+    ..name = loadingTag
+  ];
 
   bool hasMore = true;
   int page = 1;
@@ -29,7 +31,9 @@ class _HomePageBodyState extends State<HomePageBody> {
     Widget notLoginWidget = Center(
       child: ElevatedButton(
         onPressed: () => Navigator.pushNamed(context, "login"),
-        child: Text(GmLocalizations.of(context).login),
+        child: Text(GmLocalizations
+            .of(context)
+            .login),
       ),
     );
 
@@ -49,7 +53,8 @@ class _HomePageBodyState extends State<HomePageBody> {
     );
   }
 
-  IndexedWidgetBuilder indexedWidgetBuilder(BuildContext context) => (context, index) {
+  IndexedWidgetBuilder indexedWidgetBuilder(BuildContext context) =>
+          (context, index) {
         // 说明是最后一个元素
         if (items[index].name == loadingTag) {
           debugPrint("items[index].name == loadingTag");
@@ -64,7 +69,11 @@ class _HomePageBodyState extends State<HomePageBody> {
             );
           }
           // 已经加载了 100 条， 没有更多数据场景。
-
+          return Container(
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+            child: const Text("没有更多的数据", style: TextStyle(color: Colors.grey)),
+          );
         }
       };
 
@@ -72,7 +81,7 @@ class _HomePageBodyState extends State<HomePageBody> {
   Future<void> _retrieveData(BuildContext context) async {
     var data = await Git(context).getRepos(query: {"page": page, "page_size": 20});
     hasMore = data.isNotEmpty && data.length % 20 == 0;
-    items.insertAll(items.length-1, data);
+    items.insertAll(items.length - 1, data);
     page++;
   }
 }

@@ -30,8 +30,11 @@ class MyApp extends StatelessWidget {
   // 对语言做特殊处理
   LocaleResolutionCallback localeResolutionCallback(LocalModel localModel) => (locale, supportedLocales) {
         if (localModel.getLocale() != null) return localModel.getLocale();
-        if (supportedLocales.contains(locale)) return locale;
-        return const Locale('en', 'US');
+        // todo 设置为系统语言
+        // if (supportedLocales.contains(locale)) return locale;
+
+        // 默认为中文
+        return const Locale('zh', 'CN');
       };
 
   Map<String, WidgetBuilder> handleGetRoutes(BuildContext context) => {
@@ -46,6 +49,8 @@ class MyApp extends StatelessWidget {
       child: Consumer2<ThemeModel, LocalModel>(
         builder: (context, themeModel, localModel, child) {
           return MaterialApp(
+            // debugShowCheckedModeBanner: false,
+
             // primaryColor是primarySwatch的一种[500]，设置primarySwatch会更好，覆盖的范围更大
             theme: ThemeData(primarySwatch: themeModel.theme),
             // 跟title差不多，但是onGenerateTitle可以做本地化

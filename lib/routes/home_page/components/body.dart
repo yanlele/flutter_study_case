@@ -35,9 +35,9 @@ class _HomePageBodyState extends State<HomePageBody> {
 
     // 登录了的场景， 展示列表
     Widget loginWidget = ListView.separated(
-      itemBuilder: indexedWidgetBuilder(context),
-      separatorBuilder: separatorBuilder,
-      itemCount: itemCount,
+      itemBuilder: itemBuilder(),
+      separatorBuilder: separatorBuilder(),
+      itemCount: items.length,
     );
 
     if (!userModel.isLogin) return notLoginWidget;
@@ -49,7 +49,9 @@ class _HomePageBodyState extends State<HomePageBody> {
     );
   }
 
-  IndexedWidgetBuilder indexedWidgetBuilder(BuildContext context) => (context, index) {
+  IndexedWidgetBuilder separatorBuilder() => (context, index) => const Divider(height: 0);
+
+  IndexedWidgetBuilder itemBuilder() => (context, index) {
         // 说明是最后一个元素
         if (items[index].name == loadingTag) {
           debugPrint("items[index].name == loadingTag");
@@ -70,6 +72,8 @@ class _HomePageBodyState extends State<HomePageBody> {
             child: const Text("没有更多的数据", style: TextStyle(color: Colors.grey)),
           );
         }
+
+        // todo 之后再补充
         return Container();
       };
 

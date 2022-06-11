@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterappdemo1/generated/l10n.dart';
 import 'package:flutterappdemo1/routes/home_page/index.dart';
+import 'package:flutterappdemo1/routes/login_route/index.dart';
 import 'package:flutterappdemo1/states/profile_change_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       };
 
   Map<String, WidgetBuilder> handleGetRoutes(BuildContext context) => {
-
+    "login": (context) => const LoginRoute(),
   };
 
   // 重写 build 方法

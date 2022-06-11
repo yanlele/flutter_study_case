@@ -53,10 +53,10 @@ class _LoginRouteState extends State<LoginRoute> {
         padding: const EdgeInsets.all(16),
         child: Form(
           key: formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 autofocus: nameAutoFocus,
                 controller: unameController,
                 decoration: InputDecoration(
@@ -67,6 +67,7 @@ class _LoginRouteState extends State<LoginRoute> {
                 validator: (value) => (value == null || value.trim().isEmpty) ? i18n.userNameRequired : null,
               ),
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 autofocus: !nameAutoFocus,
                 controller: pwdController,
                 decoration: InputDecoration(
@@ -74,12 +75,12 @@ class _LoginRouteState extends State<LoginRoute> {
                   hintText: i18n.password,
                   labelText: i18n.password,
                   suffixIcon: IconButton(
-                    onPressed: () => setState(() => showPwd != showPwd),
+                    onPressed: () => setState(() => showPwd = !showPwd),
                     icon: Icon(showPwd ? Icons.visibility : Icons.visibility_off),
                   ),
                 ),
                 obscureText: !showPwd,
-                validator: (value) => (value == null || value.trim().isEmpty) ? i18n.userNameRequired : null,
+                validator: (value) => (value == null || value.trim().isEmpty) ? i18n.passwordRequired : null,
               ),
               // 提交按钮
               Padding(

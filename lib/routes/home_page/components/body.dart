@@ -34,19 +34,15 @@ class _HomePageBodyState extends State<HomePageBody> {
     );
 
     // 登录了的场景， 展示列表
-    Widget loginWidget = ListView.separated(
+    Widget repoListWidget = ListView.separated(
       itemBuilder: itemBuilder(),
       separatorBuilder: separatorBuilder(),
       itemCount: items.length,
     );
 
+    // 渲染
     if (!userModel.isLogin) return notLoginWidget;
-
-    return Container(
-      child: const Center(
-        child: Text('home body content'),
-      ),
-    );
+    return repoListWidget;
   }
 
   IndexedWidgetBuilder separatorBuilder() => (context, index) => const Divider(height: 0);

@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutterappdemo1/common/git_api.dart';
 import 'package:flutterappdemo1/common/global.dart';
 import 'package:flutterappdemo1/components/show_loading/index.dart';
+import 'package:flutterappdemo1/components/show_toast/index.dart';
 import 'package:flutterappdemo1/generated/l10n.dart';
 import 'package:flutterappdemo1/models/user.dart';
 import 'package:flutterappdemo1/states/profile_change_notifier.dart';
 import 'package:provider/provider.dart';
+
+import 'type.dart';
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({Key? key}) : super(key: key);
@@ -39,7 +42,11 @@ class _LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     // 国际化文案
     GmLocalizations i18n = GmLocalizations.of(context);
-    User? storeUser = Provider.of<UserModel>(context).user;
+
+    User? storeUser = Provider.of<UserModel>(context, listen: false).user;
+
+    void pageBack() => Navigator.of(context).pop();
+
     return Scaffold(
       appBar: AppBar(title: Text(i18n.login)),
       body: Padding(
@@ -57,10 +64,7 @@ class _LoginRouteState extends State<LoginRoute> {
                   hintText: i18n.userName,
                   labelText: i18n.userName,
                 ),
-                validator: (value) =>
-                (value == null || value
-                    .trim()
-                    .isEmpty) ? i18n.userNameRequired : null,
+                validator: (value) => (value == null || value.trim().isEmpty) ? i18n.userNameRequired : null,
               ),
               TextFormField(
                 autofocus: !nameAutoFocus,
@@ -75,10 +79,7 @@ class _LoginRouteState extends State<LoginRoute> {
                   ),
                 ),
                 obscureText: !showPwd,
-                validator: (value) =>
-                (value == null || value
-                    .trim()
-                    .isEmpty) ? i18n.userNameRequired : null,
+                validator: (value) => (value == null || value.trim().isEmpty) ? i18n.userNameRequired : null,
               ),
               // 提交按钮
               Padding(
@@ -86,7 +87,7 @@ class _LoginRouteState extends State<LoginRoute> {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints.expand(height: 56),
                   child: ElevatedButton(
-                    onPressed:,
+                    onPressed: () => onLogin(storeUser, pageBack),
                     child: Text(i18n.login),
                   ),
                 ),
@@ -98,7 +99,7 @@ class _LoginRouteState extends State<LoginRoute> {
     );
   }
 
-  Future<void> onLogin(User? storeUser) async {
+  Future<void> onLogin(User? storeUser, PageBack? pagePack) async {
     FormState form = formKey.currentState as FormState;
     if (!form.validate()) return;
 
@@ -107,14 +108,22 @@ class _LoginRouteState extends State<LoginRoute> {
       showLoading(context);
       user = await Git(context).login(unameController.text, pwdController.text);
       storeUser = user;
-    } on DioError catch(e) {
+    } on DioError catch (e) {
       debugPrint("e=$e", wrapWidth: 1024);
       // 登录失败提示
       if (e.response?.statusCode == 401) {
         log(e.response.toString());
+        showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
+      } else {
+        showToast(e.toString());
       }
+    } finally {
+      pagePack!();
     }
 
-
+    if (user != null) {
+      debugPrint("user=$user");
+      pagePack();
+    }
   }
 }

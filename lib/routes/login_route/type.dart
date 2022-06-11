@@ -1,0 +1,1 @@
+typedef PageBack = void Function();

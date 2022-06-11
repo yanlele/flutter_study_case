@@ -1,7 +1,14 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterappdemo1/common/git_api.dart';
 import 'package:flutterappdemo1/common/global.dart';
+import 'package:flutterappdemo1/components/show_loading/index.dart';
 import 'package:flutterappdemo1/generated/l10n.dart';
 import 'package:flutterappdemo1/models/user.dart';
+import 'package:flutterappdemo1/states/profile_change_notifier.dart';
+import 'package:provider/provider.dart';
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({Key? key}) : super(key: key);
@@ -32,6 +39,7 @@ class _LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     // 国际化文案
     GmLocalizations i18n = GmLocalizations.of(context);
+    User? storeUser = Provider.of<UserModel>(context).user;
     return Scaffold(
       appBar: AppBar(title: Text(i18n.login)),
       body: Padding(
@@ -90,12 +98,22 @@ class _LoginRouteState extends State<LoginRoute> {
     );
   }
 
-  Future<void> onLogin() async {
+  Future<void> onLogin(User? storeUser) async {
     FormState form = formKey.currentState as FormState;
     if (!form.validate()) return;
 
     User? user;
-
+    try {
+      showLoading(context);
+      user = await Git(context).login(unameController.text, pwdController.text);
+      storeUser = user;
+    } on DioError catch(e) {
+      debugPrint("e=$e", wrapWidth: 1024);
+      // 登录失败提示
+      if (e.response?.statusCode == 401) {
+        log(e.response.toString());
+      }
+    }
 
 
   }
